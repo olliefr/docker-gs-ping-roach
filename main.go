@@ -110,7 +110,7 @@ func sendHandler(db *sql.DB, c echo.Context) error {
 
 func countRecords(db *sql.DB) (int, error) {
 
-	rows, err := db.Query("SELECT COUNT(NULL) FROM message")
+	rows, err := db.Query("SELECT COUNT(*) FROM message")
 	if err != nil {
 		return 0, err
 	}
