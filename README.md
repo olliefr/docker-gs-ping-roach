@@ -5,8 +5,8 @@ A slightly more advanced Go server/microservice example for [Docker's Go Languag
 Notable features:
 
 * Extends the basic example introduced in [olliefr/docker-gs-ping](https://github.com/olliefr/docker-gs-ping).
-* Uses CockroachDB database engine.
-* Introduces Docker Compose.
+* Uses [CockroachDB](https://github.com/cockroachdb/cockroach) database engine.
+* Introduces [Docker Compose](https://docs.docker.com/compose/).
 
 ## Contributing
 
