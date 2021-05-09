@@ -82,7 +82,7 @@ func rootHandler(db *sql.DB, c echo.Context) error {
 }
 
 func sendHandler(db *sql.DB, c echo.Context) error {
-	
+
 	m := &Message{}
 
 	if err := c.Bind(m); err != nil {
@@ -92,7 +92,7 @@ func sendHandler(db *sql.DB, c echo.Context) error {
 	err := crdb.ExecuteTx(context.Background(), db, nil,
 		func(tx *sql.Tx) error {
 			_, err := tx.Exec(
-				"INSERT INTO message (value) VALUES ($1) ON CONFLICT (key) DO UPDATE SET value = excluded.value",
+				"INSERT INTO message (value) VALUES ($1) ON CONFLICT (value) DO UPDATE SET value = excluded.value",
 				m.Value,
 			)
 			if err != nil {
