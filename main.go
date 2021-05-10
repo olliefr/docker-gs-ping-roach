@@ -8,6 +8,7 @@ import (
 	"net/http"
 	"os"
 
+	"github.com/cenkalti/backoff/v4"
 	"github.com/cockroachdb/cockroach-go/v2/crdb"
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/echo/v4/middleware"
@@ -60,7 +61,16 @@ func initStore() (*sql.DB, error) {
 		os.Getenv("PGPASSWORD"),
 	)
 
-	db, err := sql.Open("postgres", pgConnString)
+	var (
+		db  *sql.DB
+		err error
+	)
+	openDB := func() error {
+		db, err = sql.Open("postgres", pgConnString)
+		return err
+	}
+
+	err = backoff.Retry(openDB, backoff.NewExponentialBackOff())
 	if err != nil {
 		return nil, err
 	}
