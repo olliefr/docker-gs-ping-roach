@@ -2,7 +2,7 @@
 ## Build
 ##
 
-FROM golang:1.16-buster AS build
+FROM golang:1.19-buster AS build
 
 WORKDIR /app
 
@@ -18,7 +18,7 @@ RUN go build -o /docker-gs-ping-roach
 ## Deploy
 ##
 
-FROM gcr.io/distroless/base-debian10
+FROM gcr.io/distroless/base-debian11
 
 WORKDIR /
 
