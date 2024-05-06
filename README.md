@@ -1,3 +1,6 @@
+> [!CAUTION]
+> This repo is out-of-date and archived. The development continues at [docker/docker-gs-ping-roach](https://github.com/docker/docker-gs-ping-roach).
+
 # docker-gs-ping-roach
  
 A slightly more advanced Go server/microservice example for [Docker's Go Language Guide](https://docs.docker.com/language/golang/). 
